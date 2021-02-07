@@ -11,7 +11,7 @@ using namespace cv;
 
 void detectAndDisplay(Mat frame);
 int gpumain();
-void cpumain(const char** argv);
+void cpumain();
 
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
@@ -22,12 +22,12 @@ String opencv_path = "./work/opencv";
 // or false to use only CPU
 bool gpu_en = false;
 
-void cpumain(const char** argv)
+void cpumain()
 {
     // Using milli as time unit for fps calculation
     using milli = std::chrono::milliseconds;
-    String str(argv[1]);
-    int camera_device = 0;
+    //String str(argv[1]);
+    //int camera_device = 0;
     string filename = "videoplayback.mp4";
     VideoCapture capture(filename);
     // Read the video stream
@@ -43,7 +43,7 @@ void cpumain(const char** argv)
     Mat frame;
     double millisec, total_milli = 0;
     int count = 0;
-    cout << "Processing frames on a CPU for:"<<argv[1];
+    cout << "Processing frames on a CPU for:";
     cout << " FPS : " << frames_per_second << endl;
     while (capture.read(frame))
     {
@@ -217,5 +217,5 @@ int main(int argc, const char** argv)
     {
         gpumain();
     }
-    return 0;
+    return 1;
 }
