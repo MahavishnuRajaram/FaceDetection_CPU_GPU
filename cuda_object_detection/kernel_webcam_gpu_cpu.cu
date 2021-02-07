@@ -37,6 +37,7 @@ void cpumain()
     string filename = "videoplayback.mp4";
     VideoCapture capture;
     capture.open(filename);
+    for(int i=0;i<65535;i++);
     // Read the video stream
     
     //capture.open(argv[1],CAP_ANY);
