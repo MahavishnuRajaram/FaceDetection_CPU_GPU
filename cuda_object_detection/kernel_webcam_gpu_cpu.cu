@@ -23,7 +23,7 @@ CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 double fps = 0;
 // !! Modify the path with opencv drirectory that contains the cascade data
-String opencv_path = "./work/opencv";
+String opencv_path = "/work/opencv";
 // Set the gloabal variable to true inorder to use the GPU
 // or false to use only CPU
 bool gpu_en = false;
@@ -216,25 +216,13 @@ int gpumain()
 
 int main(int argc, const char** argv)
 {
-    //if (!gpu_en)
-    //{
-      //  cpumain();
-    //}
-    //else
-    //{
-      //  gpumain();
-    //}
-    //return 1;
-        if (argc != 2)
-        return -1;
-
-    const std::string fname(argv[1]);
-    cv::Mat frame;
-    cv::VideoCapture reader(fname);
-        if (!reader.isOpened())
-            return 1;
-            else
-            cout << " FPS : " << frame << endl;
-
-
+    if (!gpu_en)
+    {
+      cpumain();
+    }
+    else
+    {
+      gpumain();
+    }
+    return 0;
 }
