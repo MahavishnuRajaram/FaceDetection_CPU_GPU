@@ -29,14 +29,14 @@ void cpumain()
     //String str(argv[1]);
     //int camera_device = 0;
     string filename = "videoplayback.mp4";
-    VideoCapture capture('Video.MP4');
+    VideoCapture capture();
+    capture.open('Video.MP4');
     // Read the video stream
     
     //capture.open(argv[1],CAP_ANY);
     // check if open succeeded
     if (!capture.isOpened()) {
         cerr << "ERROR! Unable to open videoFile\n";
-        capture.open(filename);
         }
         //capture.VideoCapture(argv[1]);
     // Get input FPS from video capture
