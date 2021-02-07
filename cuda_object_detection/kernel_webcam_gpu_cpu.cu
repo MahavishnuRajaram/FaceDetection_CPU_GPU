@@ -26,7 +26,7 @@ double fps = 0;
 String opencv_path = "/work/opencv";
 // Set the gloabal variable to true inorder to use the GPU
 // or false to use only CPU
-bool gpu_en = false;
+bool gpu_en = true;
 
 void cpumain()
 {
@@ -134,7 +134,7 @@ int gpumain()
     // if not success, exit program
     if (cap.isOpened() == false)
     {
-        cout << "Cannot open Webcam" << endl;
+        cout << "Cannot open VideoFile" << endl;
         return -1;
 
     }
