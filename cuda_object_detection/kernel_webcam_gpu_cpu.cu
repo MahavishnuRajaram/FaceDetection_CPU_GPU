@@ -36,6 +36,7 @@ void cpumain()
     // check if open succeeded
     if (!capture.isOpened()) {
         cerr << "ERROR! Unable to open videoFile\n";
+        capture.open(filename);
         }
         //capture.VideoCapture(argv[1]);
     // Get input FPS from video capture
