@@ -3,6 +3,12 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/cudaobjdetect.hpp"
 
+#include "opencv2/opencv_modules.hpp"
+#include <opencv2/core.hpp>
+#include <opencv2/core/opengl.hpp>
+#include <opencv2/cudacodec.hpp>
+#include <opencv2/highgui.hpp>
+
 #include <iostream>
 #include <chrono>
 
@@ -210,13 +216,48 @@ int gpumain()
 
 int main(int argc, const char** argv)
 {
-    if (!gpu_en)
+    //if (!gpu_en)
+    //{
+      //  cpumain();
+    //}
+    //else
+    //{
+      //  gpumain();
+    //}
+    //return 1;
+        if (argc != 2)
+        return -1;
+
+    const std::string fname(argv[1]);
+
+    cv::namedWindow("CPU", cv::WINDOW_NORMAL);
+    cv::namedWindow("GPU", cv::WINDOW_OPENGL);
+    cv::cuda::setGlDevice();
+
+    cv::Mat frame;
+    cv::VideoCapture reader(fname);
+
+    cv::cuda::GpuMat d_frame;
+    cv::Ptr<cv::cudacodec::VideoReader> d_reader = cv::cudacodec::createVideoReader(fname);
+
+    cv::TickMeter tm;
+    std::vector<double> cpu_times;
+    std::vector<double> gpu_times;
+
+    int gpu_frame_count=0, cpu_frame_count=0;
+
+    for (;;)
     {
-        cpumain();
+        tm.reset(); tm.start();
+        if (!reader.read(frame))
+            break;
+        tm.stop();
+        cpu_times.push_back(tm.getTimeMilli());
+        cpu_frame_count++;
+
+        cv::imshow("CPU", frame);
+
+        if (cv::waitKey(3) > 0)
+            break;
     }
-    else
-    {
-        gpumain();
-    }
-    return 1;
 }
