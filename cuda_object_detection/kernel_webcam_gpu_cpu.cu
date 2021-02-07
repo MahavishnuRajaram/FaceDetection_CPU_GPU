@@ -30,7 +30,7 @@ void cpumain()
     //int camera_device = 0;
     string filename = "videoplayback.mp4";
     VideoCapture capture();
-    capture.open('Video.MP4');
+    capture.open(filename);
     // Read the video stream
     
     //capture.open(argv[1],CAP_ANY);
