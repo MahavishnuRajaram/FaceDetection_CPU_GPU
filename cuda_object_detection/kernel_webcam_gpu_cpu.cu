@@ -26,7 +26,7 @@ double fps = 0;
 String opencv_path = "/work/opencv";
 // Set the gloabal variable to true inorder to use the GPU
 // or false to use only CPU
-bool gpu_en = true;
+bool gpu_en = false;
 
 void cpumain()
 {
@@ -34,7 +34,7 @@ void cpumain()
     using milli = std::chrono::milliseconds;
     //String str(argv[1]);
     //int camera_device = 0;
-    string filename = "videoplayback.mp4";
+    string filename = "StopMoti2001.mpeg";
     VideoCapture capture;
     capture.open(filename);
     for(int i=0;i<65535;i++);
@@ -126,7 +126,7 @@ int gpumain()
     String face_cascade_name = opencv_path + "/data/haarcascades_cuda/haarcascade_frontalface_alt.xml";
     
     // For Using video file, uncomment the below two lines and comment "VideoCapture cap(0);"
-     string filename = "videoplayback.mp4";
+     string filename = "StopMoti2001.mpeg";
      VideoCapture cap(filename);
     
     // open the Webcam
