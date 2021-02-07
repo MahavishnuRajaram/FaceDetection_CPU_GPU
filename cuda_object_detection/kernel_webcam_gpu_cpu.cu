@@ -211,7 +211,7 @@ int main(int argc, const char** argv)
 {
     if (!gpu_en)
     {
-        cpumain(argv);
+        cpumain();
     }
     else
     {
