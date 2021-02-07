@@ -231,7 +231,7 @@ int main(int argc, const char** argv)
     const std::string fname(argv[1]);
     cv::Mat frame;
     cv::VideoCapture reader(fname);
-        if (!reader.read(frame))
+        if (!reader.isOpened())
             return 1;
             else
             cout << " FPS : " << frame << endl;
