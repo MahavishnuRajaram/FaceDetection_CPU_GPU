@@ -28,10 +28,11 @@ void cpumain(const char** argv)
     using milli = std::chrono::milliseconds;
     String str(argv[1]);
     int camera_device = 0;
-    VideoCapture capture(argv[1]);
+    string filename = "videoplayback.mp4";
+    VideoCapture capture(filename);
     // Read the video stream
     
-    capture.open(argv[1],CAP_ANY);
+    //capture.open(argv[1],CAP_ANY);
     // check if open succeeded
     if (!capture.isOpened()) {
         cerr << "ERROR! Unable to open videoFile\n";
@@ -117,11 +118,11 @@ int gpumain()
     String face_cascade_name = opencv_path + "/data/haarcascades_cuda/haarcascade_frontalface_alt.xml";
     
     // For Using video file, uncomment the below two lines and comment "VideoCapture cap(0);"
-    // string filename = "videoplayback.mp4";
-    // VideoCapture cap(filename);
+     string filename = "videoplayback.mp4";
+     VideoCapture cap(filename);
     
     // open the Webcam
-    VideoCapture cap(0);
+    //VideoCapture cap(0);
     // if not success, exit program
     if (cap.isOpened() == false)
     {
