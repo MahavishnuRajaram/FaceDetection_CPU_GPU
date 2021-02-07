@@ -232,7 +232,7 @@ int main(int argc, const char** argv)
     cv::Mat frame;
     cv::VideoCapture reader(fname);
         if (!reader.read(frame))
-            break;
+            return 1;
             else
             cout << " FPS : " << frame << endl;
 
