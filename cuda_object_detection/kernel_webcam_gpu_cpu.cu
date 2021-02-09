@@ -37,7 +37,8 @@ void cpumain()
     string filename = "StopMoti2001.mpeg";
     VideoCapture capture;
     capture.open(filename);
-    for(int i=0;i<65535;i++);
+    for(int i=0;i<65535;i++)
+    cout<<"waiting..\n";
     // Read the video stream
     
     //capture.open(argv[1],CAP_ANY);
