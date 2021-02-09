@@ -46,6 +46,10 @@ void cpumain()
     if (!capture.isOpened()) {
         cerr << "ERROR! Unable to open videoFile\n";
         }
+        else
+        {
+        cout<<"opened successfully\n";
+        }
         //capture.VideoCapture(argv[1]);
     // Get input FPS from video capture
     double frames_per_second = capture.get(CAP_PROP_FPS);
