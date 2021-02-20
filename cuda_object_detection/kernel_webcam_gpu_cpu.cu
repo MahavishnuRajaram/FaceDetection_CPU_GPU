@@ -34,7 +34,7 @@ void cpumain()
     using milli = std::chrono::milliseconds;
     //String str(argv[1]);
     //int camera_device = 0;
-    string filename = "StopMoti2001.mpeg";
+    string filename = "videoplayback.mp4";
     VideoCapture capture(filename);
     //capture.open(filename);
    // for(int i=0;i<65535;i++);
