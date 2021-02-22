@@ -57,7 +57,7 @@ void cpumain(const char** argv)
     Mat frame;
     double millisec, total_milli = 0;
     int count = 0;
-    cout << "Processing frames on a CPU for:";
+    //cout << "Processing frames on a CPU for:";
     cout << " FPS : " << frames_per_second << endl;
     while (capture.read(frame))
     {
