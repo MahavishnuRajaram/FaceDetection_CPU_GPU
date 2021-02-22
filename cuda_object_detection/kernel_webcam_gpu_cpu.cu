@@ -68,7 +68,7 @@ void cpumain()
             break;
         }
         // Apply the classifier to the frame
-        detectAndDisplay(frame);
+        //detectAndDisplay(frame);
         // End time for fps calculation
         auto finish = std::chrono::high_resolution_clock::now();
         millisec = std::chrono::duration_cast<milli>(finish - start).count();
