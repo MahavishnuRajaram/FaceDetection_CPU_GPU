@@ -28,13 +28,14 @@ String opencv_path = "/work/opencv";
 // or false to use only CPU
 bool gpu_en = false;
 
-void cpumain()
+void cpumain(const char** argv)
 {
     // Using milli as time unit for fps calculation
     using milli = std::chrono::milliseconds;
     //String str(argv[1]);
     //int camera_device = 0;
     string filename = "videoplayback.mp4";
+    string filename = argv[1];
     VideoCapture capture(filename);
     //capture.open(filename);
    // for(int i=0;i<65535;i++);
@@ -224,7 +225,7 @@ int main(int argc, const char** argv)
 {
     if (!gpu_en)
     {
-      cpumain();
+      cpumain(argv);
     }
     else
     {
