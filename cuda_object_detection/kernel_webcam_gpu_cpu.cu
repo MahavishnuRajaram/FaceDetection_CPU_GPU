@@ -26,7 +26,7 @@ double fps = 0;
 String opencv_path = "/work/opencv";
 // Set the gloabal variable to true inorder to use the GPU
 // or false to use only CPU
-bool gpu_en = false;
+bool gpu_en = true;
 
 void cpumain(const char** argv)
 {
@@ -121,7 +121,7 @@ void detectAndDisplay(Mat frame)
 }
 
 // Part of code that runs on GPU
-int gpumain()
+int gpumain(const char** argv)
 {
     // Using milli as time unit for fps calculation
     using milli = std::chrono::milliseconds;
@@ -132,7 +132,7 @@ int gpumain()
     String face_cascade_name = opencv_path + "/data/haarcascades_cuda/haarcascade_frontalface_alt.xml";
     
     // For Using video file, uncomment the below two lines and comment "VideoCapture cap(0);"
-     string filename = "StopMoti2001.mpeg";
+     string filename = argv[1];
      VideoCapture cap(filename);
     
     // open the Webcam
@@ -199,7 +199,7 @@ int gpumain()
             }
             // Printing the fps on the image
             putText(frame, "FPS : " + to_string(fps), Point(0, 25), FONT_HERSHEY_SIMPLEX, 1, Scalar(0, 0, 255), 2, 8);
-            imshow(win_name, frame);
+            //imshow(win_name, frame);
         }
         // Time end for GPU compute
         auto finish = std::chrono::high_resolution_clock::now();
