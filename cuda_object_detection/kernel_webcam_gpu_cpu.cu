@@ -34,7 +34,7 @@ void cpumain(const char** argv)
     using milli = std::chrono::milliseconds;
     //String str(argv[1]);
     //int camera_device = 0;
-    string filename = "videoplayback.mp4";
+   // string filename = "videoplayback.mp4";
     string filename = argv[1];
     VideoCapture capture(filename);
     //capture.open(filename);
