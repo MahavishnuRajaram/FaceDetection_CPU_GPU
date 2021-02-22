@@ -229,7 +229,7 @@ int main(int argc, const char** argv)
     }
     else
     {
-      gpumain();
+      gpumain(argv);
     }
     return 0;
 }
